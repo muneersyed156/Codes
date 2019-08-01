@@ -1,0 +1,43 @@
+import string
+a=str(input())
+a=a.replace(" ",'')
+k=['x','y','z']
+ki=0
+p=[]#pairs
+i=0
+while(i<len(a)-1):
+    if(a[i]!=a[i+1]):
+        p.append(a[i]+a[i+1])
+        i+=2
+    else:
+        p.append(a[i]+k[ki])
+        ki+=1
+        i+=1
+p1="".join(p)
+k1=''
+for i in p1:
+    if(not(i in k1)):
+        k1=k1+i
+for i in string.ascii_lowercase:
+    if(not(i in k1)):
+        k1=k1+i
+if(k1.index('j')==k1.index('i')+1):
+    k1=list(k1)
+    pass
+elif(k1.index('i')<k1.index('j')):
+    k1=list(k1)
+    k1.pop(k1.index('j'))
+    k1.insert(k1.index('i')+1,'j')
+elif(k1.index('i')>k1.index('j')):
+    k1=list(k1)
+    k1.pop(k1.index('i'))
+    k1.index(k1.index('j')-1,'i')
+for i in range(len(k1)):
+    if(k1[i]=='i'):
+        k1[i]='ij'
+        k1.pop(i+1)
+        break
+d=[]
+for i in range(0,len(k1),5):
+    d.append(list(k1[i:i+5]))
+print(d)

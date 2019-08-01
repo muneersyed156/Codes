@@ -1,0 +1,11 @@
+def is_prime(x):
+    return not bool(sum([x % i == 0 for i in range(2, int(1+x**.5))]))
+def primelist(a):
+    return([x for x in range(2,a+1) if prime(x)])
+a=int(input())
+k=primelist(a)
+
+
+
+def is_prime(x):
+    return not bool(sum([x % i == 0 for i in range(2, int(1+x**.5))]))

@@ -1,0 +1,45 @@
+def prime(x):
+    if(x==2 or x==3):
+        return(1)
+    elif(x%2==0 or x%3==0):
+        return(0)
+    else:
+        i=5
+        while(i*i<=x):
+            if(x%i==0 or x%(i+2)==0):
+                return(0)
+            i+=6
+        return(1)
+        
+def change(a,b):
+    r=''
+    while(a!=0):
+        k=str(a%b)
+        r=str(d1[k])+r
+        a=a//b
+    return(r)
+import string
+s1=list(range(0,10))
+s1=[str(x) for x in s1]
+s3=[str(x) for x in range(0,36)]
+d=dict(zip(s1+list(string.ascii_uppercase),list(range(0,36))))
+d1=dict(zip(s3,s1+list(string.ascii_uppercase)))
+n,s=map(str,input().split())
+m=0
+n=list(n)
+n.reverse()
+s2=int(d[s])
+s2+=1
+n=[d[i] for i in n]
+for i in range(len(n)):
+    m=m+int(n[i])*(pow(s2,i))
+while(not(prime(m))):
+    m=m+1
+t=change(m,s2)
+while(s not in t):
+    m=int(t,s2)
+    m+=1
+    while(not(prime(m))):
+        m=m+1
+    t=change(m,s2)
+print(s)

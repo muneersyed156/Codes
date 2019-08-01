@@ -1,0 +1,16 @@
+v=list(map(int,input().split()))
+w=list(map(int,input().split()))
+W=int(input())
+k=[]
+it=[]
+for i in range(len(v)):
+    k.append([v[i],w[i]])
+k.sort(key=lambda x:x[0],reverse=True)#for 0/1 knapsack
+k.sort(key=lambda x:(x[0]//x[1]),reverse=True)#for general kanpsack
+maxi=0
+for i in k:
+    if(i[1]<=W):
+        maxi=maxi+i[0]
+        W-=i[1]
+        it.append(i[0])
+print(maxi,it)

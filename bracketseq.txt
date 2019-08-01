@@ -1,0 +1,44 @@
+We are given bracket sequence(may not be balanced). Every character of the sequence is either '(' or ')'.  For each closing bracket, we need to find an opening bracket which is farthest from it (and on left of it) and pair those two brackets.
+Once an opening bracket is paired with closing bracket, it can not be used again for any other closing bracket.
+Traverse from left of the sequence and for each ')' you need to find the left-most '('. Do this for all the ')'.
+
+Input: 
+First line contains an integer T which deoted number of test cases. Next line of each test case contains string which consist of  '(' or ')' .
+
+Output: 
+For each testcase, in a newline, print:
+
+The count of total number of pairs in the first line.
+The indices of opening and closing brackets (pairs) in subsequent lines. The indices are 0 based.
+If the count is zero, just print the count as no pairs exist.
+
+Constraints:
+1 <= T <= 10
+1 <= |S| <= 105
+Example :
+Input :
+3
+))((()
+()()()
+((()
+
+t=int(input())
+for _ in range(t):
+    a=str(input())
+    k=[]
+    o=[]
+    c=[]
+    c1=0
+    for i in range(len(a)):
+        if(a[i]==')' and len(k)==0):
+            continue
+        elif(a[i]=='('):
+            k.append('(')
+            o.append(i)
+        elif(a[i]==')' and len(k)!=0):
+            k.pop(-1)
+            c1+=1
+            c.append(i)
+    print(c1)
+    for i in range(min(len(o),len(c))):
+        print(o[i],c[i])

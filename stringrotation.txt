@@ -1,0 +1,31 @@
+q=str(input())
+n=int(input())
+first=''
+for i in range(n):
+  r=''
+  d,m=map(str,input().split())
+  m=int(m)
+  if(d=='L'):
+     while(m!=0):
+        q=q[1:]+q[0]
+        m-=1
+     first=first+q[0]
+  else:
+     while(m!=0):
+        q=q[-1]+q[0:(len(q)-1)]
+        m-=1
+     first=first+q[0]
+f=0
+for i in range(0,len(q)-2):
+    s=q[i:i+(len(first))]
+    t=list(first)
+    t.sort()
+    t1=list(s)
+    t1.sort()
+    if(t==t1):
+        f+=1
+        break
+if(f==0):
+    print("NO",end='')
+else:
+    print("YES",end='')
